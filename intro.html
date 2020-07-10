@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>jQuery Mobile</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+	<script type="text/javascript">
+		$('body').ready(function() {
+			$('#page1>img').attr('width', '200px');
+			$('li').css('text-align', 'center');
+			$('h3').css('text-align', 'center');
+			$('th').css('border', '1px solid black');
+			$('td').css('border', '1px solid black');
+			$('.weather').css('text-align', 'center');
+		});
+
+		$(document).ready(function() {
+			$.ajax({
+				url: 'http://api.openweathermap.org/data/2.5/weather?q=Daegu&appid=71f0bbdcaa282504d0737304ec1dfbd5&units=metric',
+				dataType: 'json',
+				type: 'GET',
+				success: function(data) {
+					var Icon = data.weather[0].icon;
+					var iconurl = "http://openweathermap.org/img/w/" + Icon + ".png";
+					var Temp = Math.floor(data.main.temp) + 'º';
+					var city = data.name;
+
+					$('#wicon').attr('src', iconurl);
+					$('.CurrTemp').prepend(Temp);
+					$('.City').append(city);
+				}
+			})
+		});
+	</script>
+	<style>
+		tbody>tr:nth-child(2n) {
+			background: #e9e9e9;
+		}
+	</style>
+</head>
+
+<body>
+	<div data-role="page" id="page1">
+		<div data-role="header">
+			<h1>영남이공대 소개 앱</h1>
+		</div>
+
+		<div data-role="content">
+			<p align='center'>
+				<img src="img/school.jpg" alt="">
+			</p>
+			<ul data-role="listview">
+				<li><a href="#page2">학교 정보</a></li>
+				<li><a href="#page3">학교 홍보영상</a></li>
+				<li><a href="#page4">학교 이미지</a></li>
+				<li><a href="#page5">학교 위치</a></li>
+			</ul>
+		</div>
+
+		<div data-role="footer" data-id="footer1" data-position="fixed">
+			<h4>1반 1805801 윤석현</h4>
+		</div>
+	</div>
+
+	<div data-role="page" id="page2" data-add-back-btn="true">
+		<div data-role="panel" id="panel" data-display="overlay" data-position="right">
+			<ul data-role="listview">
+				<li data-icon="delete"><a href="#" data-rel="close">메뉴 패널 종료</a></li>
+				<li><a href="#page3">학교 홍보영상</a></li>
+				<li><a href="#page4">학교 이미지</a></li>
+				<li><a href="#page5">학교 위치</a></li>
+			</ul>
+		</div>
+
+		<div data-role="header" data-backbtn="true">
+			<a href="#page1" data-icon="carat-l" data-direction="reverse">홈으로</a>
+			<h1>영남이공대 정보</h1>
+			<a href="#panel" data-role="button" data-inline="true" class="ui-btn-right">메뉴 패널</a>
+		</div>
+
+		<div data-role="content">
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#table1" class="ui-btn-active ui-state-persist">요약 정보</a></li>
+						<li><a href="#Dept"> 학과 목록</a></li>
+						<li><a href="#Music"> 교가 </a></li>
+					</ul>
+				</div>
+				<div id="table1">
+					<br />
+					<br />
+					<table data-role="table" class="ui-responsive ui-shadow" id="myTable">
+						<thead>
+							<tr>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th data-priority="1">표어</th>
+								<td>청년정신</td>
+							</tr>
+							<tr>
+								<th data-priority="2">건학이념</th>
+								<td>성실·협동·봉사</td>
+							</tr>
+							<tr>
+								<th data-priority="3">동물</th>
+								<td>천마</td>
+							</tr>
+							<tr>
+								<th data-priority="4">교화</th>
+								<td>개나리</td>
+							</tr>
+							<tr>
+								<th data-priority="5">교목</th>
+								<td>은행나무</td>
+							</tr>
+							<tr>
+								<th data-priority="6">개교일자</th>
+								<td>1968년 2월</td>
+							</tr>
+							<tr>
+								<th data-priority="7">분류</th>
+								<td>2/3/4년제 사립 전문대학</td>
+							</tr>
+							<tr>
+								<th data-priority="8">주소</th>
+								<td>대구광역시 남구 현충로 170</td>
+							</tr>
+							<tr>
+								<th data-priority="9">학교법인</th>
+								<td>학교법인 영남학원</td>
+							</tr>
+							<tr>
+								<th data-priority="10">대학기본역량진단평가</th>
+								<td>자율협약형 선정대학 (2019)</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="Dept">
+					<div data-role="collapsible">
+						<h3>간호대학</h3>
+						<p>간호학과</p>
+					</div>
+					<div data-role="collapsible">
+						<h3>생산기술대학</h3>
+						<p>기계계열</p>
+						<p>화장품화공계열</p>
+						<p>전기자동화과</p>
+						<p>전자정보계열</p>
+					</div>
+					<div data-role="collapsible">
+						<h3>토목건축학부</h3>
+						<p>건축과</p>
+						<p>토목과</p>
+					</div>
+					<div data-role="collapsible">
+						<h3>경영학부</h3>
+						<p>경영계열</p>
+						<p>세무회계과</p>
+					</div>
+					<div data-role="collapsible">
+						<h3>관광외식학부</h3>
+						<p>식음료조리계열</p>
+						<p>관광계열</p>
+					</div>
+					<div data-role="collapsible">
+						<h3>보건복지학부</h3>
+						<p>보건의료행정과</p>
+						<p>사회복지·보육과</p>
+						<p>뷰티스쿨</p>
+						<p>물리치료과(3년제)</p>
+						<p>치위생과(3년제)</p>
+					</div>
+					<div data-role="collapsible">
+						<h3>독립학과(계열)</h3>
+						<p>자동차과</p>
+						<p>컴퓨터정보과(3년제)</p>
+						<p>부사관과</p>
+						<p>사이버보안과(3년제)</p>
+						<p>패션디자인마케팅과</p>
+						<p>디자인스쿨</p>
+					</div>
+				</div>
+				<div id="Music">
+					<p align="center">
+						<audio controls width="100%" preload="metadata">
+							<source src="sound/schoolsong.mp3" type="audio/mp3">
+						</audio>
+						<br />
+						<div data-role="collapsible">
+							<h3>악보</h3>
+							<p align="center">
+								<img src="img/schoolsong.gif" alt="" width="50%" height="30%">
+							</p>
+						</div>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-id="footer1" data-position="fixed">
+			<h4>1반 1805801 윤석현</h4>
+		</div>
+	</div>
+
+	<div data-role="page" id="page3" data-theme="b">
+		<div data-role="panel" id="panel2" data-display="overlay" data-position="right">
+			<ul data-role="listview">
+				<li data-icon="delete"><a href="#" data-rel="close">메뉴 패널 종료</a></li>
+				<li><a href="#page2">학교 정보</a></li>
+				<li><a href="#page4">학교 이미지</a></li>
+				<li><a href="#page5">학교 위치</a></li>
+			</ul>
+		</div>
+		<div data-role="header" data-add-back-btn="true">
+			<a href="#page1" data-icon="carat-l" data-direction="reverse">홈으로</a>
+			<h1>영남이공대 홍보영상</h1>
+			<a href="#panel2" data-role="button" data-inline="true" class="ui-btn-right">메뉴 패널</a>
+		</div>
+
+		<div data-role="content">
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#tab1" class="ui-btn-active ui-state-persist">홍보영상</a></li>
+						<li><a href="#tab2">캠퍼스 영상</a></li>
+						<li><a href="#tab3">공학기술교육혁신센터 영상</a></li>
+					</ul>
+				</div>
+				<div id="tab1">
+					<h3>영남이공대 홍보 영상 </h3>
+					<p align="center">
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/d9EnE2YkhHw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</p>
+				</div>
+				<div id="tab2">
+					<h3>봄날의 영남이공대학교 캠퍼스 1분만에 둘러보기!</h3>
+					<p align="center">
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/SB21_k2MMmQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</p>
+				</div>
+				<div id="tab3">
+					<h3>영남이공대학교 공학기술교육혁신센터 홍보영상</h3>
+					<p align="center">
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/adijkjbr1Vw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="footer" data-id="footer1" data-position="fixed">
+			<h4>1반 1805801 윤석현</h4>
+		</div>
+	</div>
+
+	<div data-role="page" id="page4">
+		<div data-role="panel" id="panel3" data-display="overlay" data-position="right">
+			<ul data-role="listview">
+				<li data-icon="delete"><a href="#" data-rel="close">메뉴 패널 종료</a></li>
+				<li><a href="#page2">학교 정보</a></li>
+				<li><a href="#page3">학교 홍보영상</a></li>
+				<li><a href="#page5">학교 위치</a></li>
+			</ul>
+		</div>
+		<div data-role="header" data-add-back-btn="true">
+			<a href="#page1" data-icon="carat-l" data-direction="reverse">홈으로</a>
+			<h1>영남이공대 이미지</h1>
+			<a href="#panel3" data-role="button" data-inline="true" class="ui-btn-right">메뉴 패널</a>
+		</div>
+
+		<div data-role="content">
+			<div class="fotorama" data-width="100%" data-height="70%">
+				<img src="img/schoolimg01.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg02.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg03.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg04.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg05.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg06.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg07.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg08.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg09.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg10.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg11.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg12.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg13.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg14.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg15.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg16.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg17.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg18.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg19.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg20.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg21.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+				<img src="img/schoolimg22.jpg" alt="이미지를 불러 오는 중 문제가 생겼습니다.">
+			</div>
+		</div>
+		<div data-role="footer" data-id="footer1" data-position="fixed">
+			<h4>1반 1805801 윤석현</h4>
+		</div>
+	</div>
+
+	<div data-role="page" id="page5" data-theme="b">
+		<div data-role="panel" id="panel4" data-display="overlay" data-position="right">
+			<ul data-role="listview">
+				<li data-icon="delete"><a href="#" data-rel="close">메뉴 패널 종료</a></li>
+				<li><a href="#page2">학교 정보</a></li>
+				<li><a href="#page3">학교 홍보영상</a></li>
+				<li><a href="#page4">학교 이미지</a></li>
+			</ul>
+		</div>
+		<div data-role="header" data-add-back-btn="true">
+			<a href="#page1" data-icon="carat-l" data-direction="reverse">홈으로</a>
+			<h1>영남이공대 위치</h1>
+			<a href="#panel4" data-role="button" data-inline="true" class="ui-btn-right">메뉴 패널</a>
+		</div>
+
+		<div data-role="content">
+			<div class='weather'>
+				<div class='CurrIcon'>
+					<h4>현재 날씨</h4>
+					<img id="wicon" src="" alt="">
+				</div>
+				<div class='CurrTemp'></div>
+				<div class='City'></div>
+			</div>
+			<h3>대구광역시 남구 대명3동 현충로 170</h3>
+			<p align="center">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3234.0852269440866!2d128.5806398152206!3d35.84691368015614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3565e3764b4d5237%3A0x69d67ee91bc24d0!2z7JiB64Ko7J206rO164yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1594247286521!5m2!1sko!2skr"
+					width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+			</p>
+
+		</div>
+
+		<div data-role="footer" data-id="footer1" data-position="fixed">
+			<h4>1반 1805801 윤석현</h4>
+		</div>
+	</div>
+</body>
+
+</html>
