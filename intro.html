@@ -17,6 +17,8 @@
 			$('h3').css('text-align', 'center');
 			$('th').css('border', '1px solid black');
 			$('td').css('border', '1px solid black');
+			$('th').css('text-align', 'center');
+			$('td').css('text-align', 'center');
 			$('.weather').css('text-align', 'center');
 		});
 
@@ -46,7 +48,7 @@
 </head>
 
 <body>
-	<div data-role="page" id="page1">
+	<div data-role="page" id="page1" data-theme="b">
 		<div data-role="header">
 			<h1>영남이공대 소개 앱</h1>
 		</div>
@@ -68,7 +70,7 @@
 		</div>
 	</div>
 
-	<div data-role="page" id="page2" data-add-back-btn="true">
+	<div data-role="page" id="page2">
 		<div data-role="panel" id="panel" data-display="overlay" data-position="right">
 			<ul data-role="listview">
 				<li data-icon="delete"><a href="#" data-rel="close">메뉴 패널 종료</a></li>
@@ -78,7 +80,7 @@
 			</ul>
 		</div>
 
-		<div data-role="header" data-backbtn="true">
+		<div data-role="header">
 			<a href="#page1" data-icon="carat-l" data-direction="reverse">홈으로</a>
 			<h1>영남이공대 정보</h1>
 			<a href="#panel" data-role="button" data-inline="true" class="ui-btn-right">메뉴 패널</a>
@@ -191,7 +193,9 @@
 					</div>
 				</div>
 				<div id="Music">
+					<h3>※페이지 이동시 재생여부를 확인해 주세요※</h3>
 					<p align="center">
+
 						<audio controls width="100%" preload="metadata">
 							<source src="sound/schoolsong.mp3" type="audio/mp3">
 						</audio>
@@ -211,7 +215,7 @@
 		</div>
 	</div>
 
-	<div data-role="page" id="page3" data-theme="b">
+	<div data-role="page" id="page3" >
 		<div data-role="panel" id="panel2" data-display="overlay" data-position="right">
 			<ul data-role="listview">
 				<li data-icon="delete"><a href="#" data-rel="close">메뉴 패널 종료</a></li>
@@ -220,7 +224,7 @@
 				<li><a href="#page5">학교 위치</a></li>
 			</ul>
 		</div>
-		<div data-role="header" data-add-back-btn="true">
+		<div data-role="header">
 			<a href="#page1" data-icon="carat-l" data-direction="reverse">홈으로</a>
 			<h1>영남이공대 홍보영상</h1>
 			<a href="#panel2" data-role="button" data-inline="true" class="ui-btn-right">메뉴 패널</a>
@@ -236,18 +240,21 @@
 					</ul>
 				</div>
 				<div id="tab1">
+					<h3>※페이지 이동시 재생여부를 확인해 주세요※</h3>
 					<h3>영남이공대 홍보 영상 </h3>
 					<p align="center">
 						<iframe width="560" height="315" src="https://www.youtube.com/embed/d9EnE2YkhHw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</p>
 				</div>
 				<div id="tab2">
+					<h3>※페이지 이동시 재생여부를 확인해 주세요※</h3>
 					<h3>봄날의 영남이공대학교 캠퍼스 1분만에 둘러보기!</h3>
 					<p align="center">
 						<iframe width="560" height="315" src="https://www.youtube.com/embed/SB21_k2MMmQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</p>
 				</div>
 				<div id="tab3">
+					<h3>※페이지 이동시 재생여부를 확인해 주세요※</h3>
 					<h3>영남이공대학교 공학기술교육혁신센터 홍보영상</h3>
 					<p align="center">
 						<iframe width="560" height="315" src="https://www.youtube.com/embed/adijkjbr1Vw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -261,7 +268,7 @@
 		</div>
 	</div>
 
-	<div data-role="page" id="page4">
+	<div data-role="page" id="page4" >
 		<div data-role="panel" id="panel3" data-display="overlay" data-position="right">
 			<ul data-role="listview">
 				<li data-icon="delete"><a href="#" data-rel="close">메뉴 패널 종료</a></li>
@@ -270,7 +277,7 @@
 				<li><a href="#page5">학교 위치</a></li>
 			</ul>
 		</div>
-		<div data-role="header" data-add-back-btn="true">
+		<div data-role="header">
 			<a href="#page1" data-icon="carat-l" data-direction="reverse">홈으로</a>
 			<h1>영남이공대 이미지</h1>
 			<a href="#panel3" data-role="button" data-inline="true" class="ui-btn-right">메뉴 패널</a>
@@ -307,7 +314,7 @@
 		</div>
 	</div>
 
-	<div data-role="page" id="page5" data-theme="b">
+	<div data-role="page" id="page5">
 		<div data-role="panel" id="panel4" data-display="overlay" data-position="right">
 			<ul data-role="listview">
 				<li data-icon="delete"><a href="#" data-rel="close">메뉴 패널 종료</a></li>
@@ -316,7 +323,7 @@
 				<li><a href="#page4">학교 이미지</a></li>
 			</ul>
 		</div>
-		<div data-role="header" data-add-back-btn="true">
+		<div data-role="header">
 			<a href="#page1" data-icon="carat-l" data-direction="reverse">홈으로</a>
 			<h1>영남이공대 위치</h1>
 			<a href="#panel4" data-role="button" data-inline="true" class="ui-btn-right">메뉴 패널</a>
